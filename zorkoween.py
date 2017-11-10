@@ -1,8 +1,8 @@
 #do stuff
 
-class Monster(observable):
+class Monster(Observable):
 
-    
+
 class House(Observer):
     def update(self):
         print Observer + " added"
@@ -28,3 +28,6 @@ class Observable(object):
     def getMonsters(self):
         return self.observers
 
+class Observer(object):
+
+    __metaclass__ =
