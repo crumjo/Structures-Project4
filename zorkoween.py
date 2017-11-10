@@ -1,13 +1,14 @@
-#do stuff
+#! /usr/bin/env python3
+from abc import ABCMeta, abstractmethod
 
 class Monster(Observable):
-
+    health = 1;
+    attack = 0;
 
 class House(Observer):
     def update(self):
         print Observer + " added"
 
-class Person(Monster):
 
 class Observable(object):
 
@@ -25,9 +26,13 @@ class Observable(object):
     def remove_all_observers(self):
         self.observers = []
 
-    def getMonsters(self):
+    def get_monsters(self):
         return self.observers
+
 
 class Observer(object):
 
-    __metaclass__ =
+    __metaclass__ = abd
+    @abstractmethod
+    def update(self, *args, **kwargs):
+        pass
