@@ -1,145 +1,139 @@
 #! /usr/bin/env python3
-from abc import ABCMeta, abstractmethod
+from observe import Observable
+from observe import Observer
 import random
 
 
 class Monster(Observable):
-    #this random should be used in the house
-    random = random.randint(0,5)
-    if(random == 0):
-        #add vampire
-    if(random == 1):
-        #add ghoul
-    if(random == 2):
-        #add zombie
-    if(random == 3):
-        #add Lich
-    if(random == 4):
-        #add ghost
-    if(random == 5):
-        #add human
+
+    name = ""
+    health = -1
+    attack = -1
+
+    random = random.randint(0, 4)
+    if random == 0:
+        print("Vampire")
+    if random == 1:
+        print("Ghoul")
+    if random == 2:
+        print ("Zombie")
+    if random == 3:
+        print ("Werewolf")
+    if random == 4:
+        print ("Person")
         
-    def getHealth(self):
-        return health
+    def get_health(self):
+        return self.health
     
-    def getName(self):
-        return name
+    def get_name(self):
+        return self.name
     
-    def getAttack(self):
-        return attack
+    def get_attack(self):
+        return self.attack
     
-    def updateHealth(self,int):
-        health = health - int
+    def update_health(self, dmg):
+        self.health = self.health - dmg
+
 
 class Vampire(Monster):
     name = "Vampire"
-    health = random.randint(100,200)
-    attack = random.randint(10,20)
+    health = random.randint(100, 200)
+    attack = random.randint(10, 20)
+
 
 class Ghoul(Monster):
     name = "Ghoul"
-    health = random.randint(40,80)
-    attack = random.randint(15,30)
+    health = random.randint(40, 80)
+    attack = random.randint(15, 30)
+
 
 class Zombie(Monster):
     name = "Zombie"
-    health = random.randint(50,100)
-    attack = random.randint(0,10)
+    health = random.randint(50, 100)
+    attack = random.randint(0, 10)
+
 
 class Werewolves(Monster):
     name = "Werewolves"
     health = 200
-    attack = random.randint(0,40)
+    attack = random.randint(0, 40)
+
 
 class Person(Monster):
     name = "Person"
     health = 100
     attack = -1
 
+
 class House(Observer):
     def update(self):
-        print Observer + " added"
-
-
-class Observable(object):
-
-    def __init__(self):
-        self.observers = [];
-
-    def add_observer(self, observer):
-        if not observer in self.observers:
-            self.observers.append(observer);
-
-    def remove_observe(self, observer):
-        if observer in self.observers:
-            self.observers.remove(observer)
-
-    def remove_all_observers(self):
-        self.observers = []
-
-    def get_monsters(self):
-        return self.observers
-
-
-class Observer(object):
-
-    __metaclass__ = abd
-    @abstractmethod
-    def update(self, *args, **kwargs):
         pass
 
-class player(object):
+
+class Player(object):
     
-    health = random.randint(100,125)
-    attack = random.randint(10,20)
+    health = random.randint(100, 125)
+    attack = random.randint(10, 20)
     inventory = []
-    for i in 10:
-        temp = random.randint(1,4)
-        if(temp == 1):
+    for i in range(0, 9):
+        temp = random.randint(1, 4)
+        if temp == 1:
+            print("Hershey Kisses")
+        if temp == 2:
+            print ("Sour Straws")
+        if temp == 3:
+            print ("Chocolate Bars")
+        if temp == 4:
+            print ("Nerd Bombs")
             
-            #add hersheykisses
-        if(temp == 2):
-            #add sourStraws
-        if(temp == 3):
-            #add choclatebars
-        if(temp == 4):
-            #add nerdbombs
-            
-    def updateHealth(self, int):
-        health = health - int
+    def update_p_health(self, dmg):
+        self.health = self.health - dmg
 
-    def getHealth(self):
-        return health
+    def get_p_health(self):
+        return self.health
 
-    def getAttack(self):
-        return attack
+    def get_p_attack(self):
+        return self.attack
 
-class weapon(object):
-    def getName(self):
-        return name
-    def getAttack(self):
-        return attack
-    def getUses(self):
-        return uses
-    def use(self):
-        uses = uses - 1
 
-class HersheyKisses(weapon):
-    name = "Hershey Kisse"
+class Weapon(object):
+
+    name = ""
+    attack = 0.0
+    uses = 0
+
+    def get_name(self):
+        return self.name
+
+    def get_attack(self):
+        return self.attack
+
+    def get_uses(self):
+        return self.uses
+
+    def update_use(self):
+        self.uses = self.uses - 1
+
+
+class HersheyKisses(Weapon):
+    name = "Hershey Kisses"
     attack = 1
-    uses = 2^16
-    
-class SourStraws(weapon):
+    uses = 1
+
+
+class SourStraws(Weapon):
     name = "Sour Straw"
     attack = random.uniform(1, 1.75)
     uses = 2
 
-class ChocolateBars:
+
+class ChocolateBars(Weapon):
     name = "Chocolate bar"
     attack = random.uniform(2, 2.4)
     uses = 4
 
-class NerdBombs:
-    name =  "Nerd bomb"
+
+class NerdBombs(Weapon):
+    name = "Nerd bomb"
     attack = random.uniform(3.5, 5)
     uses = 1
