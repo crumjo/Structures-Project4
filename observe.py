@@ -4,11 +4,11 @@ from abc import ABCMeta, abstractmethod
 class Observable(object):
 
     def __init__(self):
-        self.observers = [];
+        self.observers = []
 
     def add_observer(self, observer):
         if not observer in self.observers:
-            self.observers.append(observer);
+            self.observers.append(observer)
 
     def remove_observe(self, observer):
         if observer in self.observers:
@@ -24,6 +24,7 @@ class Observable(object):
 class Observer(object):
 
     __metaclass__ = ABCMeta
+
     @abstractmethod
     def update(self, *args, **kwargs):
         pass

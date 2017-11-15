@@ -10,17 +10,25 @@ class Monster(Observable):
     health = -1
     attack = -1
 
-    random = random.randint(0, 4)
-    if random == 0:
-        print("Vampire")
-    if random == 1:
-        print("Ghoul")
-    if random == 2:
-        print ("Zombie")
-    if random == 3:
-        print ("Werewolf")
-    if random == 4:
-        print ("Person")
+    if name == "Vampire":
+        health = random.randint(100, 200)
+        attack = random.randint(10, 20)
+
+    elif name == "Ghoul":
+        health = random.randint(40, 80)
+        attack = random.randint(15, 30)
+
+    elif name == "Zombie":
+        health = random.randint(50, 100)
+        attack = random.randint(0, 10)
+
+    elif name == "Werewolf":
+        health = 200
+        attack = random.randint(0, 40)
+
+    elif name == "Person":
+        health = 100
+        attack = -1
         
     def get_health(self):
         return self.health
@@ -53,8 +61,8 @@ class Zombie(Monster):
     attack = random.randint(0, 10)
 
 
-class Werewolves(Monster):
-    name = "Werewolves"
+class Werewolf(Monster):
+    name = "Werewolf"
     health = 200
     attack = random.randint(0, 40)
 
@@ -67,7 +75,7 @@ class Person(Monster):
 
 class House(Observer):
     def update(self):
-        pass
+        print "Monster Updated."
 
 
 class Player(object):
@@ -128,7 +136,7 @@ class SourStraws(Weapon):
 
 
 class ChocolateBars(Weapon):
-    name = "Chocolate bar"
+    name = "Chocolate Bar"
     attack = random.uniform(2, 2.4)
     uses = 4
 
@@ -137,3 +145,28 @@ class NerdBombs(Weapon):
     name = "Nerd bomb"
     attack = random.uniform(3.5, 5)
     uses = 1
+
+
+if __name__ == '__main__':
+    house = House()
+    random = random.randint(0, 4)
+
+    if random == 0:
+        print("Vampire")
+        vampire = Monster()
+
+    if random == 1:
+        print("Ghoul")
+        ghoul = Monster()
+
+    if random == 2:
+        print ("Zombie")
+        zombie = Monster()
+
+    if random == 3:
+        print ("Werewolf")
+        werewolf = Monster()
+
+    if random == 4:
+        print ("Person")
+        person = Monster()
