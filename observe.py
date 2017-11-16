@@ -20,6 +20,9 @@ class Observable(object):
     def get_monsters(self):
         return self.observers
 
+    #this is new! its updates the monster at location(ideally)
+    def update_monster(self,locatoin, observer):
+        self.observers[location] == observer
 
 class Observer(object):
 
