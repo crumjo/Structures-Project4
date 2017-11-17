@@ -3,15 +3,15 @@
 #READ ME!!!
 #okay so I updated alot, I updated all monster and weapons class with a
 #constructer to make the right type of monster or weapon. I made a
-#constructer for player. I made the neigherhood and I dont think its a
+#constructer for player. I made the neighborhood and I don't think its a
 #2d array but it should work. I made a game method to be called at start
-#that will intaite player and neigherhood and fill it with houses and houses
+#that will initiate player and neighborhood and fill it with houses and houses
 #with monsters. I want to clean this up though would it be possible to make files
-#for monsters and weapons seperatly? We still need to read from command line or
+#for monsters and weapons seperately? We still need to read from command line or
 #gui to make it so the player moves from house to house and attacks. And we
 #need to make sure edge cases our covered. Also im sorry if the if statements arent
 #right. I left comments where stuff is kinda funky and I know that updating the
-#monster isnt right. Maybe we should do a turn command? We also need a method for
+#monster isn't right. Maybe we should do a turn command? We also need a method for
 #monsters to attack.
 
 from observe import Observable
@@ -78,16 +78,16 @@ class House(Observer):
         print "Monster Updated."
 
 
-class neighborhood(object):
-    def __init__(self,number):
+class Neighborhood(object):
+    def __init__(self, number):
         self.neighborhood = [number][number]
 
 
-    def place_house(self,x,y,house)
+    def place_house(self, x , y, house):
         self.neighborhood[x][y] = house
 
 
-    def get_house(self,x,y)
+    def get_house(self, x, y)
         return self.neighborhood[x][y]
 
     
@@ -101,19 +101,19 @@ class Player(object):
             temp = random.randint(1, 4)
             if temp == 1:
                 print("Hershey Kisses")
-                item = new kisses()
+                item = HersheyKisses
                 inventory.add(item)
             if temp == 2:
                 print ("Sour Straws")
-                item = new sour_straws()
+                item = SourStraws()
                 inventory.add(item)
             if temp == 3:
                 print ("Chocolate Bars")
-                item = new choc_bar()
+                item = ChocolateBars()
                 inventory.add(item)
             if temp == 4:
                 print ("Nerd Bombs")
-                item = new nerd_bomb()
+                item = NerdBombs()
                 inventory.add(item)
 
                 
@@ -186,7 +186,7 @@ class game():
         edge = argsv[2]
         #builds neighborhood
         #should this be its own helper method??
-        neighborhood caldesac = new neighborhood(edge)
+        Neighborhood caldesac = Neighborhood(edge)
         #builds houses in neighborhood
         for r in range(0,edge - 1):
             for c in range(0,edge - 1):
@@ -197,7 +197,7 @@ class game():
 
                     if random == 0:
                         print("Vampire")
-                        monseter = Vampire()
+                        monster = Vampire()
                         house().add_observer(monster)
 
                     if random == 1:
@@ -242,28 +242,28 @@ class game():
             if x_direction is not 0:
                 print ("You are in a new house to the left!")
                 x_direction = x_direction - 1
-                c_house = caldasac.get_house(x_position, y_position)
+                c_house = culdesac.get_house(x_position, y_position)
 
         if direction == "north":
             #this is gonna move you west if able
             if x_direction is not 0:
                 print ("You are in a new house to the north!")
                 y_direction = y_direction - 1
-                c_house = caldasac.get_house(x_position, y_position)
+                c_house = culdesac.get_house(x_position, y_position)
 
         if direction == "west":
             #this is gonna move you west if able
             if x_direction is not edge:
                 print ("You are in a new house to the west!")
                 x_direction = x_direction + 1
-                c_house = caldasac.get_house(x_position, y_position)
+                c_house = culdesac.get_house(x_position, y_position)
                 
         if direction == "south":
             #this is gonna move you west if able
             if x_direction is not edge:
                 print ("You are in a new house to the south!")
                 y_direction = y_direction + 1
-                c_house = caldasac.get_house(x_position, y_position)
+                c_house = culdasac.get_house(x_position, y_position)
         
     #you attack entire house, pass in house at caldasac[x][y]
     #passes in weapon to see if monster is affected and figure out dmg
@@ -318,7 +318,7 @@ class game():
 
 
 if __name__ == '__main__':
-    neighborhood caldesac = new neighborhood(3,3)
+    culdesac = Neighborhood(3, 3)
     
     for i in range(0,2):
         house = House()
